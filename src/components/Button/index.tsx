@@ -10,7 +10,6 @@ interface IProps extends HTMLAttributes<HTMLButtonElement> {
 }
 
 export default function Button({ children, toggle, disabled, type, ...rest }: IProps) {
-    console.log(toggle, children);
     return (
         <Styled.Button type={type} disabled={disabled} defaultChecked={toggle} {...rest}>
             {children}

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+interface IWrapperProps {
+    active: boolean;
+}
+
+export const Input = styled.input.attrs(({ type }) => ({
+    type: type || "number",
+}))`
     outline: 1px;
     border: none;
     background: #f4f8fa;
@@ -17,9 +23,14 @@ export const Input = styled.input`
     &:invalid {
         outline-color: #c4725c;
     }
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 `;
 
-export const InputWrapper = styled.div`
+export const InputWrapper = styled.div<IWrapperProps>`
     border-radius: 4px;
     background: #f4f8fa;
     padding: 6px 16px;
@@ -28,4 +39,6 @@ export const InputWrapper = styled.div`
     & > img {
         margin-right: 8px;
     }
+    border: 2px solid;
+    border-color: ${(props) => (props.active === true ? "#53968C" : "transparent")};
 `;
